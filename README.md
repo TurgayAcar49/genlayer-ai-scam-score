@@ -16,3 +16,13 @@ This demo shows how AI outputs can be recorded transparently.
 - Multi-factor analysis
 - On-chain reputation tracking
 - AI confidence score
+---
+
+## Example Usage
+
+Project: ExampleCoin
+
+AI Output:
+Scam Risk Score: 72
+
+This score is recorded on-chain for transparency.
