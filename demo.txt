@@ -1,0 +1,6 @@
+Example Analysis
+
+Project: FakeSwap
+AI Risk Score: 84
+Risk Level: High
+Timestamp: Demo Simulation
