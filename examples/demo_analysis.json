@@ -1,0 +1,7 @@
+{
+  "project": "FakeSwap",
+  "ai_risk_score": 84,
+  "risk_level": "High",
+  "analysis_timestamp": "2026-03-03T21:00:00Z",
+  "model_version": "v1.0-genlayer-ai"
+}
