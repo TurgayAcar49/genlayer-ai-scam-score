@@ -16,9 +16,9 @@
 </head>
 <body>
   <h1>🔥 GenLayer AI Scam Guard</h1>
-  <p>Herhangi bir coin veya proje adı gir → Anında 0-100 scam skoru</p>
+  <p>Herhangi bir coin veya proje adı / contract adresi gir → Anında 0-100 scam skoru</p>
   
-  <input id="project" type="text" placeholder="Örnek: PEPE, Bitcoin, Solana, SHIB..." />
+  <input id="project" type="text" placeholder="Örnek: PEPE, 0x6982508145454ce325ddbe47a25d4ec3d2311933" style="width: 500px;" />
   <br>
   <button onclick="analyze()">Scam Risk'i Hesapla</button>
   
@@ -33,20 +33,22 @@
     const contract = new ethers.Contract(CONTRACT_ADDRESS, abi, provider);
 
     async function analyze() {
-      const projectName = document.getElementById("project").value.trim();
-      if (!projectName) return alert("Lütfen coin/proje adı gir!");
+      const input = document.getElementById("project").value.trim();
+      if (!input) return alert("Lütfen coin adı veya contract adresi gir!");
 
       document.getElementById("result").innerHTML = "🤖 GenLayer AI analiz ediyor...";
 
       try {
-        const score = await contract.analyze_project(projectName);
+        // callStatic ile transaction göndermeden simüle ediyoruz
+        const score = await contract.callStatic.analyze_project(input);
+        
         document.getElementById("result").innerHTML = `
           <h2>Scam Risk Score: <span class="score">${score}</span>/100</h2>
-          <p><strong>${projectName}</strong></p>
-          <p style="color:#aaa; font-size:18px;">Live on GenLayer Testnet</p>
+          <p><strong>${input}</strong></p>
+          <p style="color:#aaa; font-size:18px;">Live on GenLayer Testnet • No wallet needed</p>
         `;
       } catch (e) {
-        document.getElementById("result").innerHTML = `<p style="color:red">Hata oluştu: ${e.message}</p>`;
+        document.getElementById("result").innerHTML = `<p style="color:red">Hata: ${e.message}</p>`;
       }
     }
   </script>
